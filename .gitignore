@@ -1,0 +1,10 @@
+node_modules
+.next
+nout
+ndev-app-renderer
+n.vercel
+n.DS_Store
+n.env*
+nyarn-error.log
+npnpm-lock.yaml
+nnpm-debug.log*
