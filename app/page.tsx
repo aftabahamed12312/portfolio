@@ -49,18 +49,34 @@ const education = [
   },
 ];
 
-const experience = {
-  title: 'Computer Teacher',
-  organization: 'Shree Nawaratna Secondary School',
-  duration: '15 Months',
-  responsibilities: [
-    'Teaching computer fundamentals',
-    'Guiding lower secondary students',
-    'Classroom management',
-    'Practical computer lab support',
-    'Student mentoring',
-  ],
-};
+const experiences = [
+  {
+    title: 'Computer Teacher',
+    organization: 'Shree Nawaratna Secondary School',
+    duration: '15 Months',
+    status: 'completed',
+    responsibilities: [
+      'Teaching computer fundamentals',
+      'Guiding lower secondary students',
+      'Classroom management',
+      'Practical computer lab support',
+      'Student mentoring',
+    ],
+  },
+  {
+    title: 'Computer Teacher',
+    organization: 'Tinau English Boarding School',
+    duration: 'Running',
+    status: 'active',
+    responsibilities: [
+      'Teaching computer science to secondary students',
+      'Developing engaging lesson plans and digital content',
+      'Mentoring students in programming fundamentals',
+      'Computer lab management and maintenance',
+      'Conducting practical assessments and evaluations',
+    ],
+  },
+];
 
 export default function Home() {
   const [displayText, setDisplayText] = useState('');
@@ -173,8 +189,8 @@ export default function Home() {
             <div className="absolute -right-8 bottom-16 h-36 w-36 rounded-full bg-violet-400/15 blur-3xl" />
             <div className="relative z-10 aspect-square w-80 rounded-[48px] border border-cyan-400/20 bg-slate-900/80 p-6 shadow-soft backdrop-blur-2xl transition group-hover:-translate-y-2">
               <div className="flex h-full flex-col items-center justify-center gap-6">
-                <div className="grid h-40 w-40 place-items-center rounded-full bg-gradient-to-br from-cyan-400/20 via-slate-800 to-violet-500/20 ring-1 ring-cyan-400/30 shadow-glow">
-                  <span className="text-5xl text-cyan-200">👨🏽‍💻</span>
+                <div className="grid h-40 w-40 place-items-center rounded-full bg-gradient-to-br from-cyan-400/20 via-slate-800 to-violet-500/20 ring-1 ring-cyan-400/30 shadow-glow overflow-hidden">
+                  <img src="/aftabaha.jpg" alt="Profile Picture" className="h-40 w-40 rounded-full object-cover" />
                 </div>
                 <div className="space-y-2 text-center">
                   <p className="text-sm uppercase tracking-[0.24em] text-cyan-300/80">Profile</p>
@@ -197,49 +213,80 @@ export default function Home() {
       >
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+            >
               <p className="text-sm uppercase tracking-[0.3em] text-cyan-300">About Me</p>
               <h2 className="mt-4 text-4xl font-semibold text-slate-100">Personal profile & details</h2>
               <p className="mt-4 max-w-2xl text-slate-400">
                 A dedicated Computer Science student and computer teacher from Nepal with a strong academic foundation, hands-on teaching experience, and a passion for technology education.
               </p>
-            </div>
+            </motion.div>
             <div className="grid gap-4 sm:grid-cols-2">
-              <div className="rounded-3xl border border-white/10 bg-slate-900/70 p-6 shadow-soft backdrop-blur-xl">
-                <p className="text-sm text-cyan-300">Full Name</p>
-                <p className="mt-2 text-lg font-semibold text-slate-100">Aftab Ahamed Bhat</p>
-              </div>
-              <div className="rounded-3xl border border-white/10 bg-slate-900/70 p-6 shadow-soft backdrop-blur-xl">
-                <p className="text-sm text-cyan-300">Nationality</p>
-                <p className="mt-2 text-lg font-semibold text-slate-100">Nepali</p>
-              </div>
-              <div className="rounded-3xl border border-white/10 bg-slate-900/70 p-6 shadow-soft backdrop-blur-xl">
-                <p className="text-sm text-cyan-300">Gender</p>
-                <p className="mt-2 text-lg font-semibold text-slate-100">Male</p>
-              </div>
-              <div className="rounded-3xl border border-white/10 bg-slate-900/70 p-6 shadow-soft backdrop-blur-xl">
-                <p className="text-sm text-cyan-300">Marital Status</p>
-                <p className="mt-2 text-lg font-semibold text-slate-100">Unmarried</p>
-              </div>
-              <div className="rounded-3xl border border-white/10 bg-slate-900/70 p-6 shadow-soft backdrop-blur-xl sm:col-span-2">
+              {[
+                { label: 'Full Name', value: 'Aftab Ahamed Bhat' },
+                { label: 'Nationality', value: 'Nepali' },
+                { label: 'Gender', value: 'Male' },
+                { label: 'Marital Status', value: 'Unmarried' },
+              ].map((item, idx) => (
+                <motion.div
+                  key={item.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: idx * 0.08 }}
+                  whileHover={{ y: -4, boxShadow: '0 10px 30px rgba(34, 197, 94, 0.1)' }}
+                  className="rounded-3xl border border-white/10 bg-slate-900/70 p-6 shadow-soft backdrop-blur-xl transition"
+                >
+                  <p className="text-sm text-cyan-300">{item.label}</p>
+                  <p className="mt-2 text-lg font-semibold text-slate-100">{item.value}</p>
+                </motion.div>
+              ))}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.32 }}
+                className="rounded-3xl border border-white/10 bg-slate-900/70 p-6 shadow-soft backdrop-blur-xl sm:col-span-2"
+              >
                 <p className="text-sm text-cyan-300">Address</p>
                 <p className="mt-2 text-lg font-semibold text-slate-100">Butwal-7, Rupandehi, Nepal</p>
-              </div>
-              <div className="rounded-3xl border border-white/10 bg-slate-900/70 p-6 shadow-soft backdrop-blur-xl sm:col-span-2">
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="rounded-3xl border border-white/10 bg-slate-900/70 p-6 shadow-soft backdrop-blur-xl sm:col-span-2"
+              >
                 <p className="text-sm text-cyan-300">Languages</p>
                 <p className="mt-2 text-lg font-semibold text-slate-100">Nepali, English, Hindi</p>
-              </div>
+              </motion.div>
             </div>
           </div>
 
           <div className="mt-12 grid gap-4 sm:grid-cols-3">
-            {stats.map((stat) => (
+            {stats.map((stat, idx) => (
               <motion.div
                 key={stat.label}
-                whileHover={{ y: -6 }}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                whileHover={{ y: -8, boxShadow: '0 20px 40px rgba(6, 182, 212, 0.15)' }}
                 className="rounded-3xl border border-cyan-300/10 bg-slate-900/80 p-6 text-center shadow-soft backdrop-blur-xl transition"
               >
-                <p className="text-3xl font-semibold text-cyan-300">{stat.value}</p>
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.7, delay: idx * 0.1 + 0.3 }}
+                  className="text-3xl font-semibold text-cyan-300"
+                >
+                  {stat.value}
+                </motion.p>
                 <p className="mt-2 text-sm uppercase tracking-[0.24em] text-slate-500">{stat.label}</p>
               </motion.div>
             ))}
@@ -257,11 +304,24 @@ export default function Home() {
       >
         <div className="mx-auto max-w-7xl">
           <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+            >
               <p className="text-sm uppercase tracking-[0.3em] text-cyan-300">Education</p>
               <h2 className="mt-3 text-4xl font-semibold text-slate-100">Academic timeline</h2>
-            </div>
-            <p className="max-w-xl text-slate-400">Scroll-triggered timeline animations highlighting the educational path of a dedicated student and educator.</p>
+            </motion.div>
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="max-w-xl text-slate-400"
+            >
+              Scroll-triggered timeline animations highlighting the educational path of a dedicated student and educator.
+            </motion.p>
           </div>
 
           <ul className="relative space-y-6 pl-6 before:absolute before:left-3 before:top-8 before:h-[calc(100%-3rem)] before:w-px before:bg-white/10">
@@ -279,50 +339,72 @@ export default function Home() {
         className="relative border-t border-white/10 px-6 py-20 sm:px-10 lg:px-16"
       >
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
+          <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="text-sm uppercase tracking-[0.3em] text-cyan-300">Experience</p>
               <h2 className="mt-4 text-4xl font-semibold text-slate-100">Professional teaching journey</h2>
-              <p className="mt-4 max-w-2xl text-slate-400">Hands-on classroom experience delivering computer fundamentals and mentoring students with care and structure.</p>
+              <p className="mt-4 max-w-2xl text-slate-400">Hands-on classroom experience delivering computer education with passion and expertise.</p>
+            </div>
+          </div>
 
-              <div className="mt-8 rounded-3xl border border-white/10 bg-slate-900/80 p-8 shadow-soft backdrop-blur-xl">
-                <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-                  <div>
-                    <p className="text-sm uppercase tracking-[0.3em] text-cyan-300">{experience.title}</p>
-                    <h3 className="mt-3 text-2xl font-semibold text-slate-100">{experience.organization}</h3>
+          <div className="grid gap-6 md:grid-cols-2">
+            {experiences.map((exp, index) => (
+              <motion.div
+                key={exp.organization}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ y: -8 }}
+                className="group rounded-3xl border border-white/10 bg-slate-900/80 p-8 shadow-soft backdrop-blur-xl transition"
+              >
+                <div className="flex flex-col gap-4">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <p className="text-sm uppercase tracking-[0.3em] text-cyan-300">{exp.title}</p>
+                      <h3 className="mt-3 text-2xl font-semibold text-slate-100">{exp.organization}</h3>
+                    </div>
+                    <span
+                      className={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold transition ${
+                        exp.status === 'active'
+                          ? 'animate-pulse bg-green-400/20 text-green-300'
+                          : 'bg-cyan-400/10 text-cyan-200'
+                      }`}
+                    >
+                      {exp.status === 'active' ? '● Running' : exp.duration}
+                    </span>
                   </div>
-                  <span className="rounded-full bg-cyan-400/10 px-4 py-2 text-sm font-semibold text-cyan-200">{experience.duration}</span>
-                </div>
-                <div className="mt-6 space-y-3 text-slate-300">
-                  {experience.responsibilities.map((item) => (
-                    <p key={item} className="flex items-start gap-3">
-                      <span className="mt-1 inline-flex h-2 w-2 rounded-full bg-cyan-400" />
-                      {item}
-                    </p>
-                  ))}
-                </div>
-              </div>
-            </div>
 
-            <div className="grid gap-4">
-              <motion.div whileHover={{ y: -6 }} className="rounded-3xl border border-cyan-300/10 bg-slate-900/80 p-6 shadow-soft backdrop-blur-xl">
-                <p className="text-sm uppercase tracking-[0.3em] text-cyan-300">Achievements</p>
-                <div className="mt-6 space-y-4 text-slate-300">
-                  <p className="text-xl font-semibold text-slate-100">Classroom Mentoring</p>
-                  <p className="leading-7">Guided lower secondary students through project-based computer lessons.</p>
+                  <div className="h-px w-full bg-gradient-to-r from-cyan-400/20 via-white/5 to-transparent" />
+
+                  <div className="space-y-3 text-slate-300">
+                    {exp.responsibilities.map((item, idx) => (
+                      <motion.p
+                        key={item}
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.4, delay: idx * 0.05 }}
+                        className="flex items-start gap-3"
+                      >
+                        <span className="mt-1.5 inline-flex h-2 w-2 rounded-full bg-cyan-400 flex-shrink-0" />
+                        {item}
+                      </motion.p>
+                    ))}
+                  </div>
+
+                  {exp.status === 'active' && (
+                    <div className="mt-6 rounded-2xl border border-green-400/20 bg-green-400/5 p-4">
+                      <p className="text-sm font-semibold text-green-300">Currently Teaching</p>
+                      <p className="mt-1 text-xs text-green-200/70">Active engagement with students and curriculum development</p>
+                    </div>
+                  )}
                 </div>
               </motion.div>
-              <motion.div whileHover={{ y: -6 }} className="rounded-3xl border border-cyan-300/10 bg-slate-900/80 p-6 shadow-soft backdrop-blur-xl">
-                <p className="text-sm uppercase tracking-[0.3em] text-cyan-300">Impact</p>
-                <div className="mt-6 space-y-4 text-slate-300">
-                  <p className="text-xl font-semibold text-slate-100">Student Growth</p>
-                  <p className="leading-7">Created a supportive lab environment for hands-on computer learning.</p>
-                </div>
-              </motion.div>
-            </div>
+            ))}
           </div>
         </div>
       </motion.section>
+
 
       <motion.section
         initial="hidden"
@@ -333,22 +415,41 @@ export default function Home() {
         className="relative border-t border-white/10 px-6 py-20 sm:px-10 lg:px-16"
       >
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-10 lg:grid-cols-2">
-            <div>
+          <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+            >
               <p className="text-sm uppercase tracking-[0.3em] text-cyan-300">Technical Skills</p>
               <h2 className="mt-4 text-4xl font-semibold text-slate-100">Professional software and technical strengths</h2>
               <p className="mt-4 max-w-xl text-slate-400">Organized skills with interactive glass cards and glowing progress bars to show technical fluency and tool mastery.</p>
-            </div>
+            </motion.div>
             <div className="grid gap-4">
               {[...softwareSkills, ...technicalSkills].map((skill, index) => (
-                <motion.div key={skill} whileHover={{ x: 6 }} className="rounded-3xl border border-white/10 bg-slate-900/80 p-5 shadow-soft backdrop-blur-xl transition">
+                <motion.div
+                  key={skill}
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.04 }}
+                  whileHover={{ x: 8 }}
+                  className="rounded-3xl border border-white/10 bg-slate-900/80 p-5 shadow-soft backdrop-blur-xl transition"
+                >
                   <div className="flex items-center justify-between gap-3">
                     <p className="text-lg font-semibold text-slate-100">{skill}</p>
                     <span className="rounded-full bg-cyan-400/10 px-3 py-1 text-xs uppercase tracking-[0.2em] text-cyan-200">Pro</span>
                   </div>
-                  <div className="mt-4 h-2 overflow-hidden rounded-full bg-white/10">
-                    <div className={`h-full rounded-full ${accentGradient}`} style={{ width: `${70 + (index * 2) % 20}%` }} />
-                  </div>
+                  <motion.div className="mt-4 h-2 overflow-hidden rounded-full bg-white/10">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${70 + (index * 2) % 20}%` }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 1.2, delay: 0.3 }}
+                      className={`h-full rounded-full ${accentGradient}`}
+                    />
+                  </motion.div>
                 </motion.div>
               ))}
             </div>
@@ -366,12 +467,27 @@ export default function Home() {
       >
         <div className="mx-auto max-w-7xl">
           <div className="mb-10">
-            <p className="text-sm uppercase tracking-[0.3em] text-cyan-300">Soft Skills</p>
-            <h2 className="mt-4 text-4xl font-semibold text-slate-100">Professional and interpersonal strengths</h2>
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+            >
+              <p className="text-sm uppercase tracking-[0.3em] text-cyan-300">Soft Skills</p>
+              <h2 className="mt-4 text-4xl font-semibold text-slate-100">Professional and interpersonal strengths</h2>
+            </motion.div>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {softSkills.map((skill) => (
-              <motion.div key={skill} whileHover={{ scale: 1.03, y: -4 }} className="rounded-3xl border border-white/10 bg-slate-900/80 p-6 text-center shadow-soft backdrop-blur-xl transition">
+            {softSkills.map((skill, idx) => (
+              <motion.div
+                key={skill}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: idx * 0.05 }}
+                whileHover={{ scale: 1.06, y: -6 }}
+                className="rounded-3xl border border-white/10 bg-slate-900/80 p-6 text-center shadow-soft backdrop-blur-xl transition"
+              >
                 <p className="text-sm uppercase tracking-[0.24em] text-cyan-300">{skill}</p>
               </motion.div>
             ))}
@@ -389,16 +505,37 @@ export default function Home() {
       >
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+            >
               <p className="text-sm uppercase tracking-[0.3em] text-cyan-300">Languages</p>
               <h2 className="mt-3 text-4xl font-semibold text-slate-100">Communicative proficiency</h2>
-            </div>
-            <p className="max-w-xl text-slate-400">Animated circular indicators show language confidence for daily teaching and communication.</p>
+            </motion.div>
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="max-w-xl text-slate-400"
+            >
+              Animated circular indicators show language confidence for daily teaching and communication.
+            </motion.p>
           </div>
 
           <div className="mt-10 grid gap-6 sm:grid-cols-3">
-            {languages.map((language) => (
-              <motion.div key={language.name} whileHover={{ y: -6 }} className="rounded-3xl border border-white/10 bg-slate-900/80 p-8 text-center shadow-soft backdrop-blur-xl">
+            {languages.map((language, idx) => (
+              <motion.div
+                key={language.name}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                whileHover={{ y: -8, boxShadow: '0 20px 40px rgba(34, 197, 94, 0.1)' }}
+                className="rounded-3xl border border-white/10 bg-slate-900/80 p-8 text-center shadow-soft backdrop-blur-xl transition"
+              >
                 <div className="relative mx-auto mb-6 flex h-40 w-40 items-center justify-center rounded-full bg-slate-950/80">
                   <div className="absolute inset-0 rounded-full border border-white/5" />
                   <svg viewBox="0 0 36 36" className="h-32 w-32">
@@ -408,12 +545,15 @@ export default function Home() {
                       fill="none"
                       strokeWidth="2"
                     />
-                    <path
+                    <motion.path
+                      initial={{ strokeDasharray: `0, 100` }}
+                      whileInView={{ strokeDasharray: `${language.level}, 100` }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 1.5, ease: 'easeInOut' }}
                       className="stroke-cyan-400"
                       d="M18 2.0845a15.9155 15.9155 0 1 1 0 31.831 15.9155 15.9155 0 0 1 0-31.831"
                       fill="none"
                       strokeWidth="2"
-                      strokeDasharray={`${language.level}, 100`}
                     />
                   </svg>
                   <span className="relative text-sm font-semibold uppercase tracking-[0.24em] text-slate-100">{language.level}%</span>

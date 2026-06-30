@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Aftab Ahamed Bhat | Computer Science Student & Computer Teacher',
+  title: 'Aftab Ahamed Bhat | Computer Teacher, CSIT Student & Tech Educator',
   description:
-    'Portfolio of Aftab Ahamed Bhat — Nepali computer teacher, CSIT student, and technology education specialist with experience in teaching computer fundamentals and digital skills.',
+    'Portfolio of Aftab Ahamed Bhat — experienced computer teacher at Tinau English Boarding School and Shree Nawaratna Secondary School. CSIT student specializing in computer fundamentals, digital communication, and technology education in Nepal. Professional teaching experience with strong technical and soft skills.',
   metadataBase: new URL('https://your-domain.com'),
   alternates: {
     canonical: '/',
@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    nocache: false,
     googleBot: {
       index: true,
       follow: true,
@@ -21,37 +22,72 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
+    other: {
+      'msvalidate.01': 'verification-code-if-needed',
+    },
   },
   keywords: [
     'Aftab Ahamed Bhat',
     'Computer Teacher',
     'CSIT Student',
-    'Nepal portfolio',
+    'Nepal',
+    'Tinau English Boarding School',
+    'Shree Nawaratna Secondary School',
+    'computer science',
     'technology educator',
-    'computer science student',
     'digital skills trainer',
     'computer education',
     'teaching portfolio',
     'student profile',
+    'computer fundamentals',
+    'programming basics',
+    'digital communication',
+    'Butwal',
+    'Rupandehi',
+    'Nepal-based teacher',
+    'computer lab management',
+    'IT educator',
+    'lesson planning',
+    'student mentoring',
   ],
   authors: [{ name: 'Aftab Ahamed Bhat' }],
   creator: 'Aftab Ahamed Bhat',
   publisher: 'Aftab Ahamed Bhat',
   openGraph: {
-    title: 'Aftab Ahamed Bhat | Computer Science Student & Computer Teacher',
+    title: 'Aftab Ahamed Bhat | Computer Teacher & CSIT Student Portfolio',
     description:
-      'Portfolio of a Nepali computer teacher and CSIT student specializing in computer fundamentals, digital communication, and technology education.',
+      'Explore the teaching experience, technical skills, and education profile of Aftab Ahamed Bhat, computer teacher at Tinau English Boarding School. Specializing in computer science, digital education, and student mentoring.',
     url: 'https://your-domain.com',
-    siteName: 'Aftab Ahamed Bhat Portfolio',
+    siteName: 'Aftab Ahamed Bhat - Computer Teacher Portfolio',
     type: 'website',
     locale: 'en_US',
+    images: [
+      {
+        url: 'https://your-domain.com/aftabaha.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Aftab Ahamed Bhat - Computer Teacher',
+        type: 'image/jpeg',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Aftab Ahamed Bhat | Portfolio',
+    title: 'Aftab Ahamed Bhat | Computer Teacher & CSIT Student',
     description:
-      'Discover the teaching experience, skills, and contact profile of Nepali computer educator Aftab Ahamed Bhat.',
-    creator: '@yourTwitterHandle',
+      'Computer science educator and CSIT student from Nepal with 15+ months teaching experience at secondary schools.',
+    creator: '@aftabahamed',
+    images: ['https://your-domain.com/aftabaha.jpg'],
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'black-translucent',
+    title: 'Aftab Ahamed Bhat Portfolio',
+  },
+  formatDetection: {
+    telephone: true,
+    email: true,
+    address: true,
   },
 };
 
@@ -62,20 +98,61 @@ const structuredData = {
   alternateName: 'Aftab Ahamed',
   url: 'https://your-domain.com',
   description:
-    'Portfolio site for a Nepali computer teacher and CSIT student with strong technical and teaching experience in computer applications, programming fundamentals, and digital communication.',
-  jobTitle: 'Computer Teacher',
+    'Computer teacher and CSIT student from Nepal with professional teaching experience in secondary schools. Specializing in computer science education, programming fundamentals, and digital communication.',
+  image: 'https://your-domain.com/aftabaha.jpg',
+  jobTitle: ['Computer Teacher', 'CSIT Student', 'Technology Educator'],
   nationality: 'Nepali',
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'Butwal-7',
+    addressLocality: 'Butwal',
     addressRegion: 'Rupandehi',
+    postalCode: 'Butwal-7',
     addressCountry: 'Nepal',
   },
   email: 'aftabahamed12312@gmail.com',
-  sameAs: [
-    'https://www.linkedin.com/in/your-profile',
-    'https://github.com/your-profile',
+  telephone: ['+977-9765310667', '+977-9811570273'],
+  workLocation: [
+    {
+      '@type': 'EducationalOrganization',
+      name: 'Tinau English Boarding School',
+      addressLocality: 'Tinau',
+      addressCountry: 'Nepal',
+      jobTitle: 'Computer Teacher',
+      employmentStatus: 'active',
+    },
+    {
+      '@type': 'EducationalOrganization',
+      name: 'Shree Nawaratna Secondary School',
+      addressCountry: 'Nepal',
+      jobTitle: 'Computer Teacher',
+      employmentStatus: 'completed',
+    },
   ],
+  educationDetails: [
+    {
+      '@type': 'EducationalOccupationalCredential',
+      credentialCategory: 'Degree',
+      name: 'BSc. CSIT',
+      issuingOrganization: {
+        '@type': 'EducationalOrganization',
+        name: 'Tribhuvan University',
+      },
+    },
+    {
+      '@type': 'EducationalOccupationalCredential',
+      credentialCategory: 'Diploma',
+      name: '+2 Science',
+      issuingOrganization: {
+        '@type': 'EducationalOrganization',
+        name: 'Oxford Secondary School',
+      },
+    },
+  ],
+  sameAs: [
+    'https://www.linkedin.com/in/aftab-ahamed',
+    'https://github.com/aftab-ahamed',
+  ],
+  knowsLanguage: ['en', 'ne', 'hi'],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
