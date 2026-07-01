@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -9,8 +9,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
-  viewport: 'width=device-width, initial-scale=1',
-  themeColor: '#0b1120',
   robots: {
     index: true,
     follow: true,
@@ -22,8 +20,10 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
+  },
+  verification: {
     other: {
-      'msvalidate.01': 'verification-code-if-needed',
+      'msvalidate.01': ['verification-code-if-needed'],
     },
   },
   keywords: [
@@ -89,6 +89,13 @@ export const metadata: Metadata = {
     email: true,
     address: true,
   },
+};
+
+// Fixed modern configuration for viewport properties in Next.js
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#0b1120',
 };
 
 const structuredData = {
@@ -159,7 +166,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="bg-[#060b17] text-slate-100 antialiased">
-        <script id="structured-data" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
+        <script 
+          id="structured-data" 
+          type="application/ld+json" 
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} 
+        />
         {children}
       </body>
     </html>
